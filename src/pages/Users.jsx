@@ -28,7 +28,18 @@ export default function Users() {
         const newData = data.list.filter(
           (user) => !users.some((existingUser) => existingUser.id === user.id)
         );
-        setUsers((prevUsers) => [...prevUsers, ...newData]);
+        setUsers((prevUsers) => {
+          if (
+            newData.length > 0 &&
+            !prevUsers.some((existingUser) =>
+              newData.some((newUser) => newUser.id === existingUser.id)
+            )
+          ) {
+            return [...prevUsers, ...newData];
+          } else {
+            return prevUsers;
+          }
+        });
         setLoading(false);
       });
   }, [page]);
