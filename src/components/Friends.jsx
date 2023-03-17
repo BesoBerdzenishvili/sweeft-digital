@@ -26,7 +26,20 @@ export default function Friends({ id, page }) {
     )
       .then((res) => res.json())
       .then((friends) => {
-        setFriends((prevFriends) => [...prevFriends, ...friends.list]);
+        setFriends((prevFriends) => {
+          if (
+            friends.list.length > 0 &&
+            !prevFriends.some((existingFriend) =>
+              friends.list.some(
+                (newFriend) => newFriend.id === existingFriend.id
+              )
+            )
+          ) {
+            return [...prevFriends, ...friends.list];
+          } else {
+            return prevFriends;
+          }
+        });
         setLoading(false);
       });
   }, [page]);

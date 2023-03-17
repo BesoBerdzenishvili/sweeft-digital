@@ -92,9 +92,6 @@ export default function User() {
     if (topRef.current) {
       topRef.current.scrollIntoView();
     }
-  }, [id]);
-
-  useEffect(() => {
     fetch(
       `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${id}`
     )
