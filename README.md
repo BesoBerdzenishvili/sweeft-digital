@@ -1,6 +1,6 @@
 # sweeft-digital
 
-# project is done with Vite
+## project is done with Vite
 
 ## Getting Started
 
