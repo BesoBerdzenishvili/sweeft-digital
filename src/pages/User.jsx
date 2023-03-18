@@ -75,11 +75,11 @@ const AddressLabel = styled("div", {
 
 export default function User() {
   const [userData, setUserData] = useState(null);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
   const handleScroll = (event) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-    const isApproximatelyEqual = (a, b) => Math.abs(a - b) < 1;
+    const isApproximatelyEqual = (a, b) => Math.abs(a - b) < 0.5;
     if (isApproximatelyEqual(scrollHeight - scrollTop, clientHeight)) {
       setPage((prevPage) => prevPage + 1);
     }

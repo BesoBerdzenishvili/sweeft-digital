@@ -42,7 +42,7 @@ export default function Friends({ id, page }) {
         });
         setLoading(false);
       });
-  }, [page]);
+  }, [id, page]);
 
   return (
     <>
