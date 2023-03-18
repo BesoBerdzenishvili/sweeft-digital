@@ -24,18 +24,15 @@ export default function Users() {
       `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${page}/20`
     )
       .then((res) => res.json())
-      .then((data) => {
-        const newData = data.list.filter(
-          (user) => !users.some((existingUser) => existingUser.id === user.id)
-        );
+      .then((users) => {
         setUsers((prevUsers) => {
           if (
-            newData.length > 0 &&
+            users.list.length > 0 &&
             !prevUsers.some((existingUser) =>
-              newData.some((newUser) => newUser.id === existingUser.id)
+              users.list.some((newUser) => newUser.id === existingUser.id)
             )
           ) {
-            return [...prevUsers, ...newData];
+            return [...prevUsers, ...users.list];
           } else {
             return prevUsers;
           }
