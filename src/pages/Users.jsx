@@ -46,7 +46,7 @@ export default function Users() {
 
   const handleScroll = (event) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-    const isApproximatelyEqual = (a, b) => Math.abs(a - b) < 1;
+    const isApproximatelyEqual = (a, b) => Math.abs(a - b) < 0.5;
     if (isApproximatelyEqual(scrollHeight - scrollTop, clientHeight)) {
       setPage((prevPage) => prevPage + 1);
     }
